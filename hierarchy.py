@@ -21,6 +21,7 @@ class Progression:
     def print_progression(self, n):
         print(' '.join(str(next(self)) for _ in range(n)))
 
+
 class ArithmeticProgression(Progression):
     def __init__(self, increment=1, start=0):
         super().__init__(start)
@@ -30,6 +31,23 @@ class ArithmeticProgression(Progression):
         self._current += self._increment
 
 
+class GeometricProgression(Progression):
+    def __init__(self, base=2, start=1):
+        super().__init__(start)
+        self._base = base
+
+    def _advance(self):
+        self._current *= self._base
+
+
+class FibonacciProgression(Progression):
+    def __init__(self, first=0, second=1):
+        super().__init__(first)
+        self._prev = second - first
+
+    def _advance(self):
+        self._prev, self._current = self._current, self._prev + self._current
+
 
 if __name__ == '__main__':
     p = Progression()
@@ -38,3 +56,8 @@ if __name__ == '__main__':
     a = ArithmeticProgression(5)
     a.print_progression(10)
 
+    g = GeometricProgression()
+    g.print_progression(10)
+
+    f = FibonacciProgression()
+    f.print_progression(10)
