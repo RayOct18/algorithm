@@ -1,4 +1,5 @@
 from random import shuffle
+from sorted_plot import plot_bar
 
 
 def insertion_sort(nums):
@@ -9,15 +10,15 @@ def insertion_sort(nums):
             if nums[j] < key:
                 j += 1
                 break
+        plot_bar(nums, i)
         insert_num = nums.pop(i)
         nums.insert(j, insert_num)
+        plot_bar(nums, j)
     return nums
 
 
 if __name__ == '__main__':
-    nums = list(range(10))
+    nums = list(range(20))
     shuffle(nums)
-    print(nums)
-
     sorted_nums = insertion_sort(nums)
     print(sorted_nums)
