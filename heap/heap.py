@@ -26,21 +26,19 @@ class Heap():
         nums = self.nums
         parent, right, left = self.index(i)
 
-        if parent is not None:
-            while parent is not None and nums[parent] > nums[i]:
-                nums[i], nums[parent] = nums[parent], nums[i]
-                i = parent
-                parent, right, left = self.index(i)
+        while parent is not None and nums[parent] > nums[i]:
+            nums[i], nums[parent] = nums[parent], nums[i]
+            i = parent
+            parent, right, left = self.index(i)
 
     def max_heap(self, i):
         nums = self.nums
         parent, right, left = self.index(i)
 
-        if parent is not None:
-            while parent is not None and nums[parent] < nums[i]:
-                nums[i], nums[parent] = nums[parent], nums[i]
-                i = parent
-                parent, right, left = self.index(i)
+        while parent is not None and nums[parent] < nums[i]:
+            nums[i], nums[parent] = nums[parent], nums[i]
+            i = parent
+            parent, right, left = self.index(i)
 
     def insert(self, num):
         self.nums.append(num)
